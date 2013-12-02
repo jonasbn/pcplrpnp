@@ -9,12 +9,9 @@ use 5.006;
 use base 'Perl::Critic::Policy';
 use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM :booleans};
 use Carp qw(carp);
+use Data::Dumper;
 
 our $VERSION = '0.01';
-
-Readonly::Scalar my $EXPL => q{Use specified requirement for package naming};
-Readonly::Scalar my $warning =>
-    q{Package naming is not complying with required standard};
 
 use constant supported_parameters => qw(names debug exempt_programs);
 use constant default_severity     => $SEVERITY_MEDIUM;
@@ -47,11 +44,21 @@ sub violates {
     my @children = $elem->children;
 
     if ( $children[0]->content eq 'package' ) {
-        my $package = $children[1];
+        #TODO we might have to look for words here instead of using an array index
+        #TODO and we should add exception in the case an actual package is not located
+        my $package = $children[2]->content;
         my $regex   = $self->{_names};
 
+        if ($self->{debug}) {
+            print STDERR "located package: $package\n";
+        }
+
         if ( $package !~ m/$regex/xsm ) {
-            return $self->violation( $warning, $EXPL, $elem );
+            return $self->violation( 
+                "Package name: $package is not complying with required standard", 
+                "Use specified requirement for package naming for $package", 
+                $elem
+            );
         }
     } else {
         carp 'Unable to locate package keyword';
@@ -63,17 +70,21 @@ sub violates {
 sub initialize_if_enabled {
     my ( $self, $config ) = @_;
 
+    #debug - order is significant, since we might need debugging
+    $self->{debug} = $config->get('debug') || $FALSE;
+
     #Names:
     #fetching configured names
     my $names = $config->get('names');
+
+    if ($self->{debug}) {
+        warn "THe following names are required: $names\n";
+    }
 
     #parsing configured names, see also _parse_names
     if ($names) {
         $self->{_names} = $self->_parse_names($names) || q{};
     }
-
-    #debug
-    $self->{debug} = $config->get('debug') || $FALSE;
 
     #exempt_programs
     $self->{exempt_programs} = $config->get('exempt_programs') || $TRUE;
