@@ -1,0 +1,152 @@
+package Test::Class::RequirePackageNamePattern;
+
+use strict;
+use warnings;
+
+use Env qw($TEST_VERBOSE);
+use Data::Dumper;
+use Test::More qw(no_plan);
+use base qw(Test::Class);
+
+sub startup : Test(startup) {
+	my $self = shift;
+
+	require Perl::Critic;
+	use Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
+
+	my $self->{perl_string} = q{package This::Is::A::Test;
+use strict;
+use warnings;
+
+1;
+};
+}
+
+sub no_requirement : Test(1) {
+	my $critic = Perl::Critic->new(
+    	'-profile'       => '',
+    	'-single-policy' => 'logicLAB::RequirePackageNamePattern'
+	);
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+my @violations = $critic->critique( \$self->{perl_string});
+
+is( scalar @violations, 0 );
+
+foreach my $violation (@violations) {
+    is( $violation->explanation,
+        q{Use specified requirement for package naming} );
+    is( $violation->description,
+        q{Package naming is not complying with required standard} );
+}
+
+if ($TEST_VERBOSE) {
+    diag Dumper \@violations;
+}	
+}
+
+sub requiring_presence  : Test(4) {
+	my $critic = Perl::Critic->new(
+    	'-profile'       => '',
+    	'-single-policy' => 'logicLAB::RequirePackageNamePattern'
+	);
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+my @violations = $critic->critique( $self->{perl_string} );
+
+is( scalar @violations, 1 );
+
+foreach my $violation (@violations) {
+    is( $violation->explanation,
+        q{Use specified requirement for package naming} );
+    is( $violation->description,
+        q{Package naming is not complying with required standard} );
+}
+
+if ($TEST_VERBOSE) {
+    diag Dumper \@violations;
+}	
+}
+}
+
+sub requiring_prefix : Test(4) {
+	my $critic = Perl::Critic->new(
+    	'-profile'       => '',
+    	'-single-policy' => 'logicLAB::RequirePackageNamePattern'
+	);
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+my @violations = $critic->critique( $self->{perl_string} );
+
+is( scalar @violations, 1 );
+
+foreach my $violation (@violations) {
+    is( $violation->explanation,
+        q{Use specified requirement for package naming} );
+    is( $violation->description,
+        q{Package naming is not complying with required standard} );
+}
+
+if ($TEST_VERBOSE) {
+    diag Dumper \@violations;
+}	
+}
+}
+
+sub requiring_postfix : Test(4) {
+	my $critic = Perl::Critic->new(
+    	'-profile'       => '',
+    	'-single-policy' => 'logicLAB::RequirePackageNamePattern'
+	);
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+my @violations = $critic->critique( $self->{perl_string} );
+
+is( scalar @violations, 1 );
+
+foreach my $violation (@violations) {
+    is( $violation->explanation,
+        q{Use specified requirement for package naming} );
+    is( $violation->description,
+        q{Package naming is not complying with required standard} );
+}
+
+if ($TEST_VERBOSE) {
+    diag Dumper \@violations;
+}	
+}
+}
+
+1;
