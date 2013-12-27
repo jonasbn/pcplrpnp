@@ -35,7 +35,7 @@ use warnings;
 
 my @violations = $critic->critique( \$str );
 
-is( scalar @violations, 1 );
+is( scalar @violations, 0 );
 
 foreach my $violation (@violations) {
     is( $violation->explanation,
