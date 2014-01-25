@@ -52,6 +52,9 @@ sub violates {
             print STDERR "located package: $package\n";
         }
 
+        my $no_of_patterns = scalar @{$self->{_names}};
+        my $no_of_violations = 0;
+
         foreach my $name (@{$self->{_names}}) {
             my $regex = qr/$name/;
 
@@ -60,13 +63,28 @@ sub violates {
             }
 
             if ( $package !~ m/$regex/xsm ) {
-                return $self->violation( 
-                    "Package name: $package is not complying with required standard", 
-                    "Use specified requirement for package naming for $package", 
-                    $elem
-                );
+                if ($no_of_patterns > 1) {
+                    $no_of_violations++;
+
+                    if ($no_of_patterns == $no_of_violations) {
+                        return $self->violation( 
+                            "Package name: $package is not complying with required standard", 
+                            "Use specified requirement for package naming for $package", 
+                            $elem
+                        );
+                    }
+
+                } else {
+
+                    return $self->violation( 
+                        "Package name: $package is not complying with required standard", 
+                        "Use specified requirement for package naming for $package", 
+                        $elem
+                    );
+                }
             }
         }
+
     } else {
         carp 'Unable to locate package keyword';
     }
@@ -102,11 +120,12 @@ sub initialize_if_enabled {
 sub _parse_names {
     my ( $self, $config_string ) = @_;
 
-    my @names = split m{ \s* [||]+ \s* }xsm, $config_string;
+    my @names = split /\s*\|\|\s*/, $config_string;
 
-    use Data::Dumper;
-    print STDERR "our split line:\n";
-    print STDERR Dumper \@names;
+    if ($self->{debug}) {
+        print STDERR "our split line:\n";
+        print STDERR Dumper \@names;
+    }
 
     return \@names;
 }

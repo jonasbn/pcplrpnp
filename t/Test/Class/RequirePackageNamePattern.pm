@@ -72,13 +72,47 @@ sub requiring_presence : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
             q{Use specified requirement for package naming for This::Is::A::Test} );
         is( $violation->description,
             q{Package name: This::Is::A::Test is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
+sub requiring_presence_violation : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/presence.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my $perl_string = 'package Acme::No::Presence';
+    my @violations = $critic->critique( \$perl_string );
+
+    is( scalar @violations, 1 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for Acme::No::Presence} );
+        is( $violation->description,
+            q{Package name: Acme::No::Presence is not complying with required standard} );
     }
 
     if ($TEST_VERBOSE) {
@@ -105,7 +139,7 @@ sub requiring_prefix : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
@@ -117,7 +151,7 @@ sub requiring_prefix : Test(4) {
     if ($TEST_VERBOSE) {
         diag Dumper \@violations;
  	}
- }
+}
 
 sub requiring_postfix : Test(4) {
     my $self = shift;
@@ -138,13 +172,47 @@ sub requiring_postfix : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
             q{Use specified requirement for package naming for This::Is::A::Test} );
         is( $violation->description,
             q{Package name: This::Is::A::Test is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
+sub requiring_prefix_violation : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/prefix.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my $perl_string = 'package Acme::Bad::Prefix';
+    my @violations = $critic->critique( \$perl_string );
+
+    is( scalar @violations, 1 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for Acme::Bad::Prefix} );
+        is( $violation->description,
+            q{Package name: Acme::Bad::Prefix is not complying with required standard} );
     }
 
     if ($TEST_VERBOSE) {
@@ -171,13 +239,47 @@ sub requiring_toplevel_namespace : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
             q{Use specified requirement for package naming for This::Is::A::Test} );
         is( $violation->description,
             q{Package name: This::Is::A::Test is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
+sub requiring_toplevel_namespace_violation : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/toplevel.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my $perl_string = 'package Acme::Do::Not::Conform';
+    my @violations = $critic->critique( \$perl_string );
+
+    is( scalar @violations, 1 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for Acme::Do::Not::Conform} );
+        is( $violation->description,
+            q{Package name: Acme::Do::Not::Conform is not complying with required standard} );
     }
 
     if ($TEST_VERBOSE) {
@@ -204,13 +306,47 @@ sub requiring_subclass : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
             q{Use specified requirement for package naming for This::Is::A::Test} );
         is( $violation->description,
             q{Package name: This::Is::A::Test is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
+sub requiring_subclass_violation : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/subclass.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my $perl_string = 'package Acme::I::Am::No::Subclass';
+    my @violations = $critic->critique( \$perl_string );
+
+    is( scalar @violations, 1 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for Acme::I::Am::No::Subclass} );
+        is( $violation->description,
+            q{Package name: Acme::I::Am::No::Subclass is not complying with required standard} );
     }
 
     if ($TEST_VERBOSE) {
@@ -237,7 +373,7 @@ sub requiring_multiple_or : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
@@ -270,7 +406,7 @@ sub requiring_multiple_and : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 0 );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
