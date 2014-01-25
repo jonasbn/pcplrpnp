@@ -153,39 +153,6 @@ sub requiring_prefix : Test(4) {
  	}
 }
 
-sub requiring_postfix : Test(4) {
-    my $self = shift;
-
-    my $critic = Perl::Critic->new(
-        '-profile'       => 't/postfix.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
-    );
-
-    my @p = $critic->policies;
-    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
-
-    my $policy = $p[0];
-
-    if ($TEST_VERBOSE) {
-        diag Dumper $policy;
-    }
-
-    my @violations = $critic->critique( \$self->{perl_string} );
-
-    is( scalar @violations, 0 );
-
-    foreach my $violation (@violations) {
-        is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
-        is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
-    }
-
-    if ($TEST_VERBOSE) {
-        diag Dumper \@violations;
-    }
-}
-
 sub requiring_prefix_violation : Test(4) {
     my $self = shift;
 
@@ -219,6 +186,74 @@ sub requiring_prefix_violation : Test(4) {
         diag Dumper \@violations;
     }
 }
+
+sub requiring_postfix : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/postfix.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my @violations = $critic->critique( \$self->{perl_string} );
+
+    is( scalar @violations, 0 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for This::Is::A::Test} );
+        is( $violation->description,
+            q{Package name: This::Is::A::Test is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
+sub requiring_postfix_violation : Test(4) {
+    my $self = shift;
+
+    my $critic = Perl::Critic->new(
+        '-profile'       => 't/postfix.conf',
+        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+    );
+
+    my @p = $critic->policies;
+    is( scalar @p, 1, 'single policy RequirePackageNamePattern' );
+
+    my $policy = $p[0];
+
+    if ($TEST_VERBOSE) {
+        diag Dumper $policy;
+    }
+
+    my $perl_string = 'package Acme::This::Is::The::End';
+    my @violations = $critic->critique( \$perl_string );
+
+    is( scalar @violations, 1 );
+
+    foreach my $violation (@violations) {
+        is( $violation->explanation,
+            q{Use specified requirement for package naming for Acme::This::Is::The::End} );
+        is( $violation->description,
+            q{Package name: Acme::This::Is::The::End is not complying with required standard} );
+    }
+
+    if ($TEST_VERBOSE) {
+        diag Dumper \@violations;
+    }
+}
+
 
 sub requiring_toplevel_namespace : Test(4) {
     my $self = shift;
