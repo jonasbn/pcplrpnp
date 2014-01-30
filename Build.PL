@@ -16,7 +16,7 @@ my $build = Module::Build->new(
     create_makefile_pl   => 'traditional',
     create_readme        => 1,
     recursive_test_files => 1,
-    configure_requires => { 'Module::Build' => 0.40 }
+    configure_requires => { 'Module::Build' => 0.40 },
     requires             => {
         'Params::Validate'     => '0',
         'Perl::Critic::Policy' => '0',
