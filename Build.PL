@@ -12,20 +12,25 @@ my $build = Module::Build->new(
     dist_version_from =>
         'lib/Perl/Critic/Policy/logicLAB/RequirePackageNamePattern.pm',
     license => 'artistic_2',
-#REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
+    #REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
     create_makefile_pl   => 'traditional',
     create_readme        => 1,
     recursive_test_files => 1,
-    configure_requires => { 'Module::Build' => 0.40 },
-    requires             => {
-        'Params::Validate'     => '0',
+    configure_requires => {
+        'Module::Build' => '0.40', 
+    },
+    requires => {
+        'Perl::Critic'         => '0',
+        'Carp'                 => '0',
         'Perl::Critic::Policy' => '0',
         'Perl::Critic::Utils'  => '0',
+        'Data::Dumper'         => '0',
+        'perl'                 => '5.6.0',
     },
     build_requires => {
-        'File::Spec'          => '0',
-        'Test::Perl::Critic'  => '0',
-        'Test::Prereq::Build' => '0',
+        'Test::Perl::Critic' => '0',
+        'Test::Class'        => '0',
+        'Test::More'         => '0',
     },
     meta_merge => {
         resources => {
