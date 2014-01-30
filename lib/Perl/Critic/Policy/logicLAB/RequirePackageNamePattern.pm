@@ -134,6 +134,8 @@ sub _parse_names {
 
 __END__
 
+=pod
+
 =head1 NAME
 
 Perl::Critic::Policy::logicLAB::RequirePackageNamePattern - simple policy for enforcing a package naming policy
@@ -143,5 +145,172 @@ Perl::Critic::Policy::logicLAB::RequirePackageNamePattern - simple policy for en
 This policy is a policy in the Perl::Critic::logicLAB distribution. The policy
 is themed: logiclab.
 
-=cut
+=head1 VERSION
 
+This documentation describes version 0.01.
+
+=head1 DESCRIPTION
+
+    $ perlcritic --single-policy logicLAB::RequirePackageNamePattern lib
+
+=head1 CONFIGURATION AND ENVIRONMENT
+
+This policy allow you to configure the contents of the shebang lines you 
+want to allow using L</formats>.
+
+=head2 names
+
+C<names>, is the configuration parameter used to specify the patterns you 
+want to enforce.
+
+The different usage scenarios are documented below
+
+=head3 Toplevel namespace
+
+    [logicLAB::RequirePackageNamePattern]
+    names = ^App::
+
+=head3 Subclass
+
+    [logicLAB::RequirePackageNamePattern]
+    names = ::JONASBN$
+
+=head3 Postfix
+
+    [logicLAB::RequirePackageNamePattern]
+    names = Utils$
+
+=head3 Prefix
+
+    [logicLAB::RequirePackageNamePattern]
+    names = ^Acme
+
+=head3 Contains
+
+    [logicLAB::RequirePackageNamePattern]
+    names = Tiny
+
+=head3 Or
+
+    [logicLAB::RequirePackageNamePattern]
+    names = Acme || logicLAB
+
+=head2 debug
+
+Optionally and for development purposes I have added a debug flag. This can be set in 
+your L<Perl::Critic> configuration file as follows:
+
+    [logicLAB::RequirePackageNamePattern]
+    debug = 1
+
+This enables more explicit output on what is going on during the actual processing of 
+the policy.
+
+=head1 DEPENDENCIES AND REQUIREMENTS
+
+=over
+
+=item * L<Module::Build>
+
+=item * L<Perl::Critic>
+
+=item * L<Perl::Critic::Utils>
+
+=item * L<Perl::Critic::Policy>
+
+=item * L<Test::More>
+
+=item * L<Test::Class>
+
+=item * L<Test::Perl::Critic>
+
+=item * L<Data::Dumper>
+
+=back
+
+=head1 INCOMPATIBILITIES
+
+This distribution has no known incompatibilities.
+
+=head1 BUGS AND LIMITATIONS
+
+There are no known bugs or limitations
+
+=head1 TEST AND QUALITY
+
+The following policies have been disabled for this distribution
+
+=over
+
+=item * L<Perl::Critic::Policy::ValuesAndExpressions::ProhibitConstantPragma>
+
+Constants are good, - see the link below.
+
+=over
+
+=item * L<https://logiclab.jira.com/wiki/display/OPEN/Perl-Critic-Policy-ValuesAndExpressions-ProhibitConstantPragma>
+
+=back
+
+=item * L<Perl::Critic::Policy::NamingConventions::Capitalization>
+
+=back
+
+See also F<t/perlcriticrc>
+
+=head2 TEST COVERAGE
+
+Coverage test executed the following way, the coverage report is based on the 
+version described in this documentation (see L</VERSION>).
+
+    ./Build testcover
+
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    File                           stmt   bran   cond    sub    pod   time  total
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+    ...uirePackageNamePattern.pm   89.2   68.2   36.4  100.0  100.0  100.0   82.5
+    Total                          89.2   68.2   36.4  100.0  100.0  100.0   82.5
+    ---------------------------- ------ ------ ------ ------ ------ ------ ------
+
+=head1 SEE ALSO
+
+=over
+
+=item * L<Perl::Critic>
+
+=item * L<perlmod manpage|http://perldoc.perl.org/perlmod.html>
+
+=item * L<http://logiclab.jira.com/wiki/display/PCPLRPNP/Home>
+
+=item * L<http://logiclab.jira.com/wiki/display/PCLL/Home>
+
+=back
+
+=head1 AUTHOR
+
+=over
+
+=item * Jonas B. Nielsen, jonasbn C<< <jonasbn@cpan.org> >>
+
+=back
+
+=head1 ACKNOWLEDGEMENT
+
+=over
+
+=item * Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors for 
+Perl::Critic
+
+=back 
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright (c) 2013-2014 Jonas B. Nielsen, jonasbn. All rights reserved.
+
+Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;  is released under 
+the Artistic License 2.0
+
+The distribution is licensed under the Artistic License 2.0, as specified by 
+the license file included in this distribution.
+
+=cut
