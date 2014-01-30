@@ -11,7 +11,7 @@ my $build = Module::Build->new(
     module_name => 'Perl::Critic::Policy::logicLAB::RequirePackageNamePattern',
     dist_version_from =>
         'lib/Perl/Critic/Policy/logicLAB/RequirePackageNamePattern.pm',
-    license => 'artistic',
+    license => 'artistic_2',
 #REF: http://logicLAB.jira.com/wiki/display/OPEN/Module-Build#Module-Build-AutogeneratetheMakefile.PLforbackwardscompatibility
     create_makefile_pl   => 'traditional',
     create_readme        => 1,
