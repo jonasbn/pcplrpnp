@@ -41,13 +41,17 @@ sub no_requirement : Test(2) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -76,13 +80,17 @@ sub requiring_presence : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -112,13 +120,17 @@ sub requiring_presence_violation : Test(4) {
     my $perl_string = 'package Acme::No::Presence';
     my @violations = $critic->critique( \$perl_string );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 1, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for Acme::No::Presence} );
+            q{Use specified requirement for package naming for Acme::No::Presence},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: Acme::No::Presence is not complying with required standard} );
+            q{Package name: Acme::No::Presence is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -147,13 +159,17 @@ sub requiring_prefix : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -183,13 +199,17 @@ sub requiring_prefix_violation : Test(4) {
     my $perl_string = 'package Acme::Bad::Prefix';
     my @violations = $critic->critique( \$perl_string );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 1, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for Acme::Bad::Prefix} );
+            q{Use specified requirement for package naming for Acme::Bad::Prefix},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: Acme::Bad::Prefix is not complying with required standard} );
+            q{Package name: Acme::Bad::Prefix is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -218,13 +238,17 @@ sub requiring_postfix : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -254,13 +278,17 @@ sub requiring_postfix_violation : Test(4) {
     my $perl_string = 'package Acme::This::Is::The::End';
     my @violations = $critic->critique( \$perl_string );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 1, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for Acme::This::Is::The::End} );
+            q{Use specified requirement for package naming for Acme::This::Is::The::End},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: Acme::This::Is::The::End is not complying with required standard} );
+            q{Package name: Acme::This::Is::The::End is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -290,13 +318,17 @@ sub requiring_toplevel_namespace : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -326,13 +358,17 @@ sub requiring_toplevel_namespace_violation : Test(4) {
     my $perl_string = 'package Acme::Do::Not::Conform';
     my @violations = $critic->critique( \$perl_string );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 1, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for Acme::Do::Not::Conform} );
+            q{Use specified requirement for package naming for Acme::Do::Not::Conform},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: Acme::Do::Not::Conform is not complying with required standard} );
+            q{Package name: Acme::Do::Not::Conform is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -361,13 +397,17 @@ sub requiring_subclass : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -397,13 +437,17 @@ sub requiring_subclass_violation : Test(4) {
     my $perl_string = 'package Acme::I::Am::No::Subclass';
     my @violations = $critic->critique( \$perl_string );
 
-    is( scalar @violations, 1 );
+    is( scalar @violations, 1, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for Acme::I::Am::No::Subclass} );
+            q{Use specified requirement for package naming for Acme::I::Am::No::Subclass},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: Acme::I::Am::No::Subclass is not complying with required standard} );
+            q{Package name: Acme::I::Am::No::Subclass is not complying with required standard},
+            'asserting description',
+        );
 
         if ($TEST_VERBOSE) {
             diag 'explanation: ', $violation->explanation;
@@ -437,13 +481,17 @@ sub requiring_multiple_or : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
@@ -472,13 +520,17 @@ sub requiring_multiple_and : Test(4) {
 
     my @violations = $critic->critique( \$self->{perl_string} );
 
-    is( scalar @violations, 0 );
+    is( scalar @violations, 0, 'asserting number of violations' );
 
     foreach my $violation (@violations) {
         is( $violation->explanation,
-            q{Use specified requirement for package naming for This::Is::A::Test} );
+            q{Use specified requirement for package naming for This::Is::A::Test},
+            'asserting explanation',
+        );
         is( $violation->description,
-            q{Package name: This::Is::A::Test is not complying with required standard} );
+            q{Package name: This::Is::A::Test is not complying with required standard},
+            'asserting description',
+        );
     }
 
     if ($DEBUG) {
