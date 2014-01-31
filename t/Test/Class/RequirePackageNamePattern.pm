@@ -5,7 +5,7 @@ package Test::Class::RequirePackageNamePattern;
 use strict;
 use warnings;
 
-use Env qw($TEST_VERBOSE);
+use Env qw($DEBUG $TEST_VERBOSE);
 use Data::Dumper;
 use Test::More qw(no_plan);
 use base qw(Test::Class);
@@ -33,7 +33,7 @@ sub no_requirement : Test(2) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -48,7 +48,7 @@ sub no_requirement : Test(2) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -66,7 +66,7 @@ sub requiring_presence : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -81,7 +81,7 @@ sub requiring_presence : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -99,7 +99,7 @@ sub requiring_presence_violation : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -115,7 +115,7 @@ sub requiring_presence_violation : Test(4) {
             q{Package name: Acme::No::Presence is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -133,7 +133,7 @@ sub requiring_prefix : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -148,7 +148,7 @@ sub requiring_prefix : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
  	}
 }
@@ -166,7 +166,7 @@ sub requiring_prefix_violation : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -182,7 +182,7 @@ sub requiring_prefix_violation : Test(4) {
             q{Package name: Acme::Bad::Prefix is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -200,7 +200,7 @@ sub requiring_postfix : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -215,7 +215,7 @@ sub requiring_postfix : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -233,7 +233,7 @@ sub requiring_postfix_violation : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -249,7 +249,7 @@ sub requiring_postfix_violation : Test(4) {
             q{Package name: Acme::This::Is::The::End is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -268,7 +268,7 @@ sub requiring_toplevel_namespace : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -283,7 +283,7 @@ sub requiring_toplevel_namespace : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -301,7 +301,7 @@ sub requiring_toplevel_namespace_violation : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -317,7 +317,7 @@ sub requiring_toplevel_namespace_violation : Test(4) {
             q{Package name: Acme::Do::Not::Conform is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -335,7 +335,7 @@ sub requiring_subclass : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -350,7 +350,7 @@ sub requiring_subclass : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -368,7 +368,7 @@ sub requiring_subclass_violation : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -382,9 +382,14 @@ sub requiring_subclass_violation : Test(4) {
             q{Use specified requirement for package naming for Acme::I::Am::No::Subclass} );
         is( $violation->description,
             q{Package name: Acme::I::Am::No::Subclass is not complying with required standard} );
+
+        if ($TEST_VERBOSE) {
+            diag 'explanation: ', $violation->explanation;
+            diag 'description: ', $violation->description,
+        }
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -402,7 +407,7 @@ sub requiring_multiple_or : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -417,7 +422,7 @@ sub requiring_multiple_or : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }
@@ -435,7 +440,7 @@ sub requiring_multiple_and : Test(4) {
 
     my $policy = $p[0];
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper $policy;
     }
 
@@ -450,7 +455,7 @@ sub requiring_multiple_and : Test(4) {
             q{Package name: This::Is::A::Test is not complying with required standard} );
     }
 
-    if ($TEST_VERBOSE) {
+    if ($DEBUG) {
         diag Dumper \@violations;
     }
 }

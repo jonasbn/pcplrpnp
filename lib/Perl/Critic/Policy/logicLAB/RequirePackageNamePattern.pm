@@ -151,12 +151,39 @@ This documentation describes version 0.01.
 
 =head1 DESCRIPTION
 
+The policy can be used to enforced naming conventions for packages.
+
+=head1 SYNOPSIS
+
+Policy configuration:
+
+    [logicLAB::RequirePackageNamePattern]
+    names = Acme
+
+Your package:
+    
+    package This::Is::A::Test;
+
+        # code goes here
+
+    1;
+
+Invocation of policy:
+
     $ perlcritic --single-policy logicLAB::RequirePackageNamePattern lib
+
+Explanation:
+
+    Use specified requirement for package naming for This::Is::A::Test
+
+Description:
+
+    Package name: This::Is::A::Test is not complying with required standard
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
 This policy allow you to configure the contents of the shebang lines you 
-want to allow using L</formats>.
+want to allow using L</names>.
 
 =head2 names
 
