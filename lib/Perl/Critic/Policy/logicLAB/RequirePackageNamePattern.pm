@@ -62,7 +62,7 @@ sub violates {
                 print STDERR "Regex: $regex\n";
             }
 
-            if ( $package !~ m/$regex/xsm ) {
+            if ( $package !~ m/$regex/xs ) {
                 if ($no_of_patterns > 1) {
                     $no_of_violations++;
 
