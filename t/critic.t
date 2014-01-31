@@ -1,3 +1,5 @@
+#!/usr/bin/env perl
+
 # Courtesy of Jeffrey Ryan Thalhammer
 # http://search.cpan.org/~thaljef/Test-Perl-Critic/lib/Test/Perl/Critic.pm
 
