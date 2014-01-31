@@ -18,6 +18,8 @@ sub startup : Test(startup) {
     use Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
 
     $self->{perl_string} = join '', <DATA>;
+
+    return;
 }
 
 sub no_requirement : Test(2) {
@@ -51,6 +53,8 @@ sub no_requirement : Test(2) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_presence : Test(4) {
@@ -84,6 +88,8 @@ sub requiring_presence : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_presence_violation : Test(4) {
@@ -118,6 +124,8 @@ sub requiring_presence_violation : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_prefix : Test(4) {
@@ -150,7 +158,9 @@ sub requiring_prefix : Test(4) {
 
     if ($DEBUG) {
         diag Dumper \@violations;
- 	}
+    }
+
+    return;
 }
 
 sub requiring_prefix_violation : Test(4) {
@@ -185,6 +195,8 @@ sub requiring_prefix_violation : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_postfix : Test(4) {
@@ -218,6 +230,8 @@ sub requiring_postfix : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_postfix_violation : Test(4) {
@@ -252,6 +266,8 @@ sub requiring_postfix_violation : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 
@@ -286,6 +302,8 @@ sub requiring_toplevel_namespace : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_toplevel_namespace_violation : Test(4) {
@@ -320,6 +338,8 @@ sub requiring_toplevel_namespace_violation : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_subclass : Test(4) {
@@ -353,6 +373,8 @@ sub requiring_subclass : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_subclass_violation : Test(4) {
@@ -392,6 +414,8 @@ sub requiring_subclass_violation : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_multiple_or : Test(4) {
@@ -425,6 +449,8 @@ sub requiring_multiple_or : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
+
+    return;
 }
 
 sub requiring_multiple_and : Test(4) {
@@ -458,8 +484,9 @@ sub requiring_multiple_and : Test(4) {
     if ($DEBUG) {
         diag Dumper \@violations;
     }
-}
 
+    return;
+}
 
 1;
 
