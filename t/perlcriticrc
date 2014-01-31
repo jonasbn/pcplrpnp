@@ -30,3 +30,7 @@ allow_leading_tabs = 0
 [-Documentation::RequirePodSections]
 
 [-Documentation::RequirePodLinksIncludeText]
+
+#Perhaps I have encountered a big of sorts in Perl::Critic::Bangs, it might however
+#be inherited from Perl::Critic::Utils
+[-Bangs::ProhibitUselessRegexModifiers]
