@@ -56,6 +56,9 @@ sub violates {
         my $no_of_violations = 0;
 
         foreach my $name (@{$self->{_names}}) {
+            #TODO investigate wht this is a regular expression and so are 
+            #actual evaluation in line 67, at least according to Perl::Critic
+            #[RegularExpressions::RequireExtendedFormatting]
             my $regex = qr/$name/x;
 
             if ($self->{debug}) {
