@@ -9,6 +9,7 @@ use Env qw($DEBUG $TEST_VERBOSE);
 use Data::Dumper;
 use Test::More qw(no_plan);
 use base qw(Test::Class);
+use File::Slurp qw(slurp);
 use lib qw(lib);
 
 sub startup : Test(startup) {
@@ -17,7 +18,8 @@ sub startup : Test(startup) {
     require Perl::Critic;
     use Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
 
-    $self->{perl_string} = join '', <DATA>;
+    #reading DATA from botton of file
+    $self->{perl_string} = do { local $/ = undef; <DATA> };
 
     return;
 }
