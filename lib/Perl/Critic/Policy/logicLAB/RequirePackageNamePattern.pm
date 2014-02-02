@@ -56,7 +56,7 @@ sub violates {
         my $no_of_violations = 0;
 
         foreach my $name (@{$self->{_names}}) {
-            my $regex = qr/$name/;
+            my $regex = qr/$name/x;
 
             if ($self->{debug}) {
                 print STDERR "Regex: $regex\n";
@@ -120,7 +120,7 @@ sub initialize_if_enabled {
 sub _parse_names {
     my ( $self, $config_string ) = @_;
 
-    my @names = split /\s*\|\|\s*/, $config_string;
+    my @names = split /\s*\|\|\s*/x, $config_string;
 
     if ($self->{debug}) {
         print STDERR "our split line:\n";
