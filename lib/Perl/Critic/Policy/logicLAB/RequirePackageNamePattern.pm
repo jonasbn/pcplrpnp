@@ -56,7 +56,7 @@ sub violates {
         my $no_of_violations = 0;
 
         foreach my $name (@{$self->{_names}}) {
-            #TODO investigate wht this is a regular expression and so are 
+            #TODO investigate wht this is a regular expression and so are
             #actual evaluation in line 67, at least according to Perl::Critic
             #[RegularExpressions::RequireExtendedFormatting]
             my $regex = qr/$name/x;
@@ -70,18 +70,18 @@ sub violates {
                     $no_of_violations++;
 
                     if ($no_of_patterns == $no_of_violations) {
-                        return $self->violation( 
-                            "Package name: $package is not complying with required standard", 
-                            "Use specified requirement for package naming for $package", 
+                        return $self->violation(
+                            "Package name: $package is not complying with required standard",
+                            "Use specified requirement for package naming for $package",
                             $elem
                         );
                     }
 
                 } else {
 
-                    return $self->violation( 
-                        "Package name: $package is not complying with required standard", 
-                        "Use specified requirement for package naming for $package", 
+                    return $self->violation(
+                        "Package name: $package is not complying with required standard",
+                        "Use specified requirement for package naming for $package",
                         $elem
                     );
                 }
@@ -143,7 +143,7 @@ __END__
 
 Perl::Critic::Policy::logicLAB::RequirePackageNamePattern - simple policy for enforcing a package naming policy
 
-=head1 AFFILIATION 
+=head1 AFFILIATION
 
 This policy is a policy in the Perl::Critic::logicLAB distribution. The policy
 is themed: logiclab.
@@ -164,7 +164,7 @@ Policy configuration:
     names = Acme
 
 Your package:
-    
+
     package This::Is::A::Test;
 
         # code goes here
@@ -185,12 +185,12 @@ Description:
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
-This policy allow you to configure the contents of the shebang lines you 
+This policy allow you to configure the contents of the shebang lines you
 want to allow using L</names>.
 
 =head2 names
 
-C<names>, is the configuration parameter used to specify the patterns you 
+C<names>, is the configuration parameter used to specify the patterns you
 want to enforce.
 
 The different usage scenarios are documented below
@@ -227,13 +227,13 @@ The different usage scenarios are documented below
 
 =head2 debug
 
-Optionally and for development purposes I have added a debug flag. This can be set in 
+Optionally and for development purposes I have added a debug flag. This can be set in
 your L<Perl::Critic> configuration file as follows:
 
     [logicLAB::RequirePackageNamePattern]
     debug = 1
 
-This enables more explicit output on what is going on during the actual processing of 
+This enables more explicit output on what is going on during the actual processing of
 the policy.
 
 =head1 DEPENDENCIES AND REQUIREMENTS
@@ -290,7 +290,7 @@ See also F<t/perlcriticrc>
 
 =head2 TEST COVERAGE
 
-Coverage test executed the following way, the coverage report is based on the 
+Coverage test executed the following way, the coverage report is based on the
 version described in this documentation (see L</VERSION>).
 
     ./Build testcover
@@ -328,19 +328,19 @@ version described in this documentation (see L</VERSION>).
 
 =over
 
-=item * Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors for 
+=item * Jeffrey Ryan Thalhammer (THALJEF) and the Perl::Critic contributors for
 Perl::Critic
 
-=back 
+=back
 
 =head1 LICENSE AND COPYRIGHT
 
 Copyright (c) 2013-2014 Jonas B. Nielsen, jonasbn. All rights reserved.
 
-Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;  is released under 
+Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;  is released under
 the Artistic License 2.0
 
-The distribution is licensed under the Artistic License 2.0, as specified by 
+The distribution is licensed under the Artistic License 2.0, as specified by
 the license file included in this distribution.
 
 =cut
