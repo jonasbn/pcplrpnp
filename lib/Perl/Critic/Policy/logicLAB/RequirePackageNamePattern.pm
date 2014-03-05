@@ -11,7 +11,7 @@ use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM :booleans};
 use Carp qw(carp);
 use Data::Dumper;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use constant supported_parameters => qw(names debug exempt_programs);
 use constant default_severity     => $SEVERITY_MEDIUM;
@@ -150,7 +150,7 @@ is themed: logiclab.
 
 =head1 VERSION
 
-This documentation describes version 0.01.
+This documentation describes version 0.02.
 
 =head1 DESCRIPTION
 
