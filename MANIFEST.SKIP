@@ -52,7 +52,7 @@
 # Avoid Devel::Cover and Devel::CoverX::Covered files.
 \bcover_db\b
 \bcovered\b
- 
+
 # Avoid MYMETA files
 ^MYMETA\.
 #!end included /Users/jonasbn/perl5/perlbrew/perls/perl-5.10.1/lib/5.10.1/ExtUtils/MANIFEST.SKIP
@@ -71,3 +71,9 @@
 
 # Avoid archives of this distribution
 \bPerl-Critic-Policy-logicLAB-RequirePackageNamePattern-[\d\.\_]+
+
+# Github - Travis integration
+\.travis\.yml
+
+# Github
+README.mkdn
