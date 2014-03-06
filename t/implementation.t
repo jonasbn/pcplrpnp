@@ -9,7 +9,7 @@ use Test::More tests => 4;
 
 use_ok('Perl::Critic::Policy::logicLAB::RequirePackageNamePattern');
 
-ok(my $policy = Perl::Critic::Policy::logicLAB::RequirePackageNamePattern->new());
+ok(my $policy = Perl::Critic::Policy::logicLAB::RequirePackageNamePattern->new(), 'testing constructor');
 
 isa_ok($policy, 'Perl::Critic::Policy::logicLAB::RequirePackageNamePattern');
 
