@@ -9,7 +9,6 @@ use Env qw($DEBUG $TEST_VERBOSE);
 use Data::Dumper;
 use Test::More qw(no_plan);
 use base qw(Test::Class);
-use File::Slurp qw(slurp);
 use lib qw(lib);
 
 sub startup : Test(startup) {
