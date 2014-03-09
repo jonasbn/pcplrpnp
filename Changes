@@ -6,7 +6,16 @@ Project change log:
 
 http://logiclab.jira.com/browse/PCPLRPNP#selectedTab=com.atlassian.jira.plugin.system.project%3Achangelog-panel
 
-0.02 2014-03-05
+0.03 2014-03-09 - update not required
+
+- Addressed several reports on failing tests from CPAN testers for version 0.02.
+  The test-suite included File::Slurp without using it, but since the smokers assert
+  this is failed [1]
+
+  https://github.com/jonasbn/pcplrpnp/issues/1
+
+
+0.02 2014-03-05 - update not required
 
 - Added Changes (this) file
 
