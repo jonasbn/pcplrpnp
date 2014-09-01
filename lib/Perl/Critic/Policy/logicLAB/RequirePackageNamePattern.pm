@@ -139,6 +139,14 @@ __END__
 
 =pod
 
+=begin markdown
+
+[![CPAN version](https://badge.fury.io/pl/Perl-Critic-Policy-logicLAB-RequirePackageNamePattern.svg)](http://badge.fury.io/pl/Perl-Critic-Policy-logicLAB-RequirePackageNamePattern)
+[![Build Status](https://travis-ci.org/jonasbn/pcplrpnp.svg?branch=master)](https://travis-ci.org/jonasbn/pcplrpnp)
+[![Coverage Status](https://coveralls.io/repos/jonasbn/pcplrpnp/badge.png)](https://coveralls.io/r/jonasbn/pcplrpnp)
+
+=end markdown
+
 =head1 NAME
 
 Perl::Critic::Policy::logicLAB::RequirePackageNamePattern - simple policy for enforcing a package naming policy
