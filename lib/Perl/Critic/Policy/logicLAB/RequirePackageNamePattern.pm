@@ -9,7 +9,7 @@ use Perl::Critic::Utils qw{ $SEVERITY_MEDIUM :booleans};
 use Carp qw(carp);
 use Data::Dumper;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use constant supported_parameters => qw(names debug exempt_programs);
 use constant default_severity     => $SEVERITY_MEDIUM;
@@ -341,7 +341,7 @@ Perl::Critic
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2013-2014 Jonas B. Nielsen, jonasbn. All rights reserved.
+Copyright (c) 2013-2015 Jonas B. Nielsen, jonasbn. All rights reserved.
 
 Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;  is released under
 the Artistic License 2.0
