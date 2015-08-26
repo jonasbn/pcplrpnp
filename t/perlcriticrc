@@ -1,7 +1,5 @@
 
-# $Id$
-
-severity = 1
+severity = 3
 verbose  = 8
 
 #------------------------------------------------------------------------------
@@ -11,9 +9,6 @@ verbose  = 8
 [Documentation::RequirePodSections]
 lib_sections    = NAME|AFFILIATION|VERSION|DESCRIPTION|CONFIGURATION AND ENVIRONMENT|DEPENDENCIES AND REQUIREMENTS|INCOMPATIBILITIES|BUGS AND LIMITATIONS|BUG REPORTING|TEST AND QUALITY|SEE ALSO|AUTHOR|LICENSE AND COPYRIGHT
 
-[Miscellanea::RequireRcsKeywords]
-keywords = Id
-
 [CodeLayout::ProhibitHardTabs]
 allow_leading_tabs = 0
 
@@ -21,9 +16,6 @@ allow_leading_tabs = 0
 
 [-NamingConventions::Capitalization]
 
-[-Bangs::ProhibitDebuggingModules]
-
-[-Editor::RequireEmacsFileVariables]
 
 [logicLAB::RequireSheBang]
 formats = #!/usr/bin/env perl
@@ -33,12 +25,3 @@ formats = #!/usr/bin/env perl
 [-Documentation::RequirePodSections]
 
 [-Documentation::RequirePodLinksIncludeText]
-
-#Perhaps I have encountered a big of sorts in Perl::Critic::Bangs, it might however
-#be inherited from Perl::Critic::Utils
-[-Bangs::ProhibitUselessRegexModifiers]
-
-[-logicLAB::ProhibitUseLib]
-
-[-logicLAB::RequireVersionFormat]
-formats = \A\d+\.\d+\z

@@ -1,7 +1,5 @@
 package Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
 
-# $Id: ProhibitShellDispatch.pm 8114 2013-07-25 12:57:04Z jonasbn $
-
 use strict;
 use warnings;
 use 5.006;

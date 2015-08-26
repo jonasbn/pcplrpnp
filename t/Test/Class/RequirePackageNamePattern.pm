@@ -1,7 +1,5 @@
 package Test::Class::RequirePackageNamePattern;
 
-# $Id$
-
 use strict;
 use warnings;
 
