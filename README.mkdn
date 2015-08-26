@@ -164,7 +164,7 @@ Perl::Critic
 
 # LICENSE AND COPYRIGHT
 
-Copyright (c) 2013-2014 Jonas B. Nielsen, jonasbn. All rights reserved.
+Copyright (c) 2013-2015 Jonas B. Nielsen, jonasbn. All rights reserved.
 
 Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;  is released under
 the Artistic License 2.0
