@@ -13,7 +13,7 @@ is themed: logiclab.
 
 # VERSION
 
-This documentation describes version 0.03.
+This documentation describes version 0.05.
 
 # DESCRIPTION
 
