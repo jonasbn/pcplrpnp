@@ -1,5 +1,10 @@
 Changes file for Perl::Critic::Policy::logicLAB::RequirePackageNamePattern
 
+0.05 2015-08-27 Maintenance release, update not required
+
+- Forgot to update the Changes (this) file
+
+
 0.04 2015-08-26 Maintenance release, update not required
 
 - Migrated from Module::Build to Dist::Zilla
