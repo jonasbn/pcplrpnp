@@ -2,6 +2,7 @@ requires 'Carp';
 requires 'Perl::Critic::Policy';
 requires 'Perl::Critic::Utils';
 requires 'perl', '5.014';
+requires 'Data::Dumper';
 
 on 'build', sub {
     requires 'Module::Build', '0.30';
