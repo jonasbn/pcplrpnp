@@ -155,7 +155,7 @@ version described in this documentation (see ["VERSION"](#version)).
 
 # AUTHOR
 
-- Jonas B. Nielsen, jonasbn `<jonasbn@cpan.org>`
+- Jonas B. (jonasbn) `<jonasbn@cpan.org>`
 
 # ACKNOWLEDGEMENT
 
@@ -164,7 +164,7 @@ Perl::Critic
 
 # LICENSE AND COPYRIGHT
 
-Copyright (c) 2013-2015 Jonas B. Nielsen, jonasbn. All rights reserved.
+Copyright (c) 2013-2019 Jonas B. (jonasbn). All rights reserved.
 
 Perl::Critic::Policy::Module::RequirePackageNamePattern is released under
 the Artistic License 2.0
