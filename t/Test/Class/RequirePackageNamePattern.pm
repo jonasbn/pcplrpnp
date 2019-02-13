@@ -13,7 +13,7 @@ sub startup : Test(startup) {
     my $self = shift;
 
     require Perl::Critic;
-    use Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
+    use Perl::Critic::Policy::Module::RequirePackageNamePattern;
 
     #reading DATA from botton of file
     $self->{perl_string} = do { local $/ = undef; <DATA> };
@@ -26,7 +26,7 @@ sub no_requirement : Test(2) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => '',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -65,7 +65,7 @@ sub requiring_presence : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/presence.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -104,7 +104,7 @@ sub requiring_presence_violation : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/presence.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -144,7 +144,7 @@ sub requiring_prefix : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/prefix.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -183,7 +183,7 @@ sub requiring_prefix_violation : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/prefix.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -223,7 +223,7 @@ sub requiring_postfix : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/postfix.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -262,7 +262,7 @@ sub requiring_postfix_violation : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/postfix.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -303,7 +303,7 @@ sub requiring_toplevel_namespace : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/toplevel.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -342,7 +342,7 @@ sub requiring_toplevel_namespace_violation : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/toplevel.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -382,7 +382,7 @@ sub requiring_subclass : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/subclass.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -421,7 +421,7 @@ sub requiring_subclass_violation : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/subclass.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -466,7 +466,7 @@ sub requiring_multiple_or : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/or.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;
@@ -505,7 +505,7 @@ sub requiring_multiple_and : Test(4) {
 
     my $critic = Perl::Critic->new(
         '-profile'       => 't/and.conf',
-        '-single-policy' => 'logicLAB::RequirePackageNamePattern'
+        '-single-policy' => 'Module::RequirePackageNamePattern'
     );
 
     my @p = $critic->policies;

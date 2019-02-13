@@ -7,10 +7,10 @@ use  warnings;
 
 use Test::More tests => 4;
 
-use_ok('Perl::Critic::Policy::logicLAB::RequirePackageNamePattern');
+use_ok('Perl::Critic::Policy::Module::RequirePackageNamePattern');
 
-ok(my $policy = Perl::Critic::Policy::logicLAB::RequirePackageNamePattern->new(), 'testing constructor');
+ok(my $policy = Perl::Critic::Policy::Module::RequirePackageNamePattern->new(), 'testing constructor');
 
-isa_ok($policy, 'Perl::Critic::Policy::logicLAB::RequirePackageNamePattern');
+isa_ok($policy, 'Perl::Critic::Policy::Module::RequirePackageNamePattern');
 
 can_ok($policy, qw(violates));

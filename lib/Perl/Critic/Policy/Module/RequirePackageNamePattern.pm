@@ -1,4 +1,4 @@
-package Perl::Critic::Policy::logicLAB::RequirePackageNamePattern;
+package Perl::Critic::Policy::Module::RequirePackageNamePattern;
 
 use strict;
 use warnings;
@@ -147,7 +147,7 @@ __END__
 
 =head1 NAME
 
-Perl::Critic::Policy::logicLAB::RequirePackageNamePattern - simple policy for enforcing a package naming policy
+Perl::Critic::Policy::Module::RequirePackageNamePattern - simple policy for enforcing a package naming policy
 
 =head1 AFFILIATION
 
@@ -166,7 +166,7 @@ The policy can be used to enforced naming conventions for packages.
 
 Policy configuration:
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = Acme
 
 Your package:
@@ -179,7 +179,7 @@ Your package:
 
 Invocation of policy:
 
-    $ perlcritic --single-policy logicLAB::RequirePackageNamePattern lib
+    $ perlcritic --single-policy Module::RequirePackageNamePattern lib
 
 Explanation:
 
@@ -203,32 +203,32 @@ The different usage scenarios are documented below
 
 =head3 Toplevel namespace
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = ^App::
 
 =head3 Subclass
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = ::JONASBN$
 
 =head3 Postfix
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = Utils$
 
 =head3 Prefix
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = ^Acme
 
 =head3 Contains
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = Tiny
 
 =head3 Or
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     names = Acme || logicLAB
 
 =head2 debug
@@ -236,7 +236,7 @@ The different usage scenarios are documented below
 Optionally and for development purposes I have added a debug flag. This can be set in
 your L<Perl::Critic> configuration file as follows:
 
-    [logicLAB::RequirePackageNamePattern]
+    [Module::RequirePackageNamePattern]
     debug = 1
 
 This enables more explicit output on what is going on during the actual processing of
@@ -343,7 +343,7 @@ Perl::Critic
 
 Copyright (c) 2013-2015 Jonas B. Nielsen, jonasbn. All rights reserved.
 
-Perl::Critic::Policy::logicLAB::RequirePackageNamePattern is released under
+Perl::Critic::Policy::Module::RequirePackageNamePattern is released under
 the Artistic License 2.0
 
 The distribution is licensed under the Artistic License 2.0, as specified by
