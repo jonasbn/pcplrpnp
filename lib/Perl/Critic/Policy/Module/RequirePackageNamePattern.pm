@@ -13,7 +13,7 @@ use Data::Dumper;
 
 use constant supported_parameters => qw(names debug exempt_programs);
 use constant default_severity     => $SEVERITY_MEDIUM;
-use constant default_themes       => qw(logiclab);
+use constant default_themes       => qw(logiclab cosmetic);
 
 sub prepare_to_scan_document {
     my ( $self, $document ) = @_;
