@@ -326,7 +326,7 @@ version described in this documentation (see L</VERSION>).
 
 =over
 
-=item * Jonas B. Nielsen, jonasbn C<< <jonasbn@cpan.org> >>
+=item * Jonas B. (jonasbn) C<< <jonasbn@cpan.org> >>
 
 =back
 
@@ -341,7 +341,7 @@ Perl::Critic
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (c) 2013-2015 Jonas B. Nielsen, jonasbn. All rights reserved.
+Copyright (c) 2013-2019 Jonas B. (jonasbn). All rights reserved.
 
 Perl::Critic::Policy::Module::RequirePackageNamePattern is released under
 the Artistic License 2.0
