@@ -1,7 +1,7 @@
 requires 'Carp';
 requires 'Perl::Critic::Policy';
 requires 'Perl::Critic::Utils';
-requires 'perl', '5.014';
+requires 'perl', '5.39.0';
 requires 'Data::Dumper';
 
 on 'build', sub {
